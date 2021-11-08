@@ -1,0 +1,18 @@
+name: Full CI process for Symfony 5
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  symfony:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check PHP Version
+        run: php -v
+      - name: Install Composer dependencies
+        run: composer install 
+      - name: Run functionnal and unit tests
+        run: php ./vendor/bin/phpunit
